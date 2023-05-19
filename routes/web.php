@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
 
-    Route::resource('project', ProjectController::class);
+    Route::resource('project', ProjectController::class)->parameters(['projects' => 'project:slug']);
     Route::get('/', [DashboardController::class, 'home']);
 });
 

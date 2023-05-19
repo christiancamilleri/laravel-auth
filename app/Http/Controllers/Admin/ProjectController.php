@@ -26,6 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        return "sei nella create";
     }
 
     /**
