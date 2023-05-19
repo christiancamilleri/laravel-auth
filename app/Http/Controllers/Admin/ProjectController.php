@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
 
 class ProjectController extends Controller
 {
@@ -26,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return "sei nella create";
+        return view('admin.projects.create');
     }
 
     /**
@@ -37,7 +39,25 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validation($request);
+
+        $formData = $request->all();
+
+
+        $newProject = new Project();
+
+        $newProject->name = $formData['name'];
+        $newProject->thumb_preview = $formData['thumb_preview'];
+        $newProject->description = $formData['description'];
+        $newProject->link_repo = $formData['link_repo'];
+        $newProject->languages = $formData['languages'];
+        $newProject->frameworks = $formData['frameworks'];
+
+        $newProject->slug = Str::slug($formData['name'], '-');
+
+        $newProject->save();
+
+        return redirect()->route('admin.project.show', $newProject->id);
     }
 
     /**
@@ -48,7 +68,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return "sei nello show";
     }
 
     /**
@@ -83,5 +103,29 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+    private function validation($request)
+    {
+
+        $formData = $request->all();
+
+        $validator = FacadesValidator::make($formData, [
+            'name' => 'required',
+            'thumb_preview' => 'required',
+            'description' => 'required',
+            'link_repo' => 'required',
+            'languages' => 'required',
+            'frameworks' => 'required',
+        ], [
+            'name.required' => 'Questo campo non può rimanere vuoto',
+            'thumb_preview.required' => 'Questo campo non può rimanere vuoto',
+            'description.required' => 'Questo campo non può rimanere vuoto',
+            'link_repo.required' => 'Questo campo non può rimanere vuoto',
+            'languages.required' => 'Questo campo non può rimanere vuoto',
+            'frameworks.required' => 'Questo campo non può rimanere vuoto',
+
+        ])->validate();
+
+        return $validator;
     }
 }
