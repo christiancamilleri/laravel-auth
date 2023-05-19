@@ -23,7 +23,7 @@ class ProjectSeeder extends Seeder
 
             $project->name = $faker->sentence(3);
             $project->thumb_preview = $faker->text(100);
-            $project->description = $faker->paragraphs();
+            $project->description = $faker->text(400);
             $project->link_repo = $faker->text(100);
             $project->languages = $faker->sentence(3);
             $project->frameworks = $faker->sentence(2);
