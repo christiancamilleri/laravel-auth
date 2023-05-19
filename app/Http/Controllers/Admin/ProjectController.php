@@ -13,7 +13,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function index()
     {
@@ -24,7 +24,7 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function create()
     {
@@ -57,18 +57,19 @@ class ProjectController extends Controller
 
         $newProject->save();
 
-        return redirect()->route('admin.project.show', $newProject->id);
+        return redirect()->route('admin.project.show', $newProject);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     *
      */
     public function show(Project $project)
     {
-        return "sei nello show";
+
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
