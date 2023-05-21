@@ -57,7 +57,7 @@ class ProjectController extends Controller
 
         $newProject->save();
 
-        return redirect()->route('admin.project.show', $newProject);
+        return redirect()->route('admin.projects.show', $newProject);
     }
 
     /**
@@ -76,7 +76,7 @@ class ProjectController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function edit(Project $project)
     {
@@ -101,7 +101,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect()->route('admin.project.show', $project->id);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
@@ -112,7 +112,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
     private function validation($request)
     {

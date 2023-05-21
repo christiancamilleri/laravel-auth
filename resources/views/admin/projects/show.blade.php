@@ -25,4 +25,6 @@
 
        
     </ul>
+<a href="{{route('admin.projects.index')}}"><button class="btn btn-primary">Torna alla lista dei progetti</button></a>
+    
 @endsection
