@@ -4,22 +4,22 @@
     <ul>
         
         <li>
-            {{$project->name}}
+           Nome: {{$project->name}}
         </li>
         <li>
-            {{$project->thumb_preview}}
+           Thumb preview: <br> <img src="{{$project->thumb_preview}}" alt=""> 
         </li>
         <li>
-            {{$project->description}}
+            Descrizione: {{$project->description}}
         </li>
         <li>
-            {{$project->link_repo}}
+           Link repo: {{$project->link_repo}}
         </li>
         <li>
-            {{$project->languages}}
+           Linguaggi utilizzati {{$project->languages}}
         </li>
         <li>
-            {{$project->frameworks}}
+           Frameworks utilizzati: {{$project->frameworks}}
         </li>
         
 

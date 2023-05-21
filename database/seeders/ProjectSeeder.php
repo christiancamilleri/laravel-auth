@@ -22,7 +22,7 @@ class ProjectSeeder extends Seeder
             $project = new Project();
 
             $project->name = $faker->sentence(3);
-            $project->thumb_preview = $faker->text(100);
+            $project->thumb_preview = "https://picsum.photos/200";
             $project->description = $faker->text(400);
             $project->link_repo = $faker->text(100);
             $project->languages = $faker->sentence(3);

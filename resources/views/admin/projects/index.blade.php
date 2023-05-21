@@ -4,8 +4,8 @@
     
 <div class="container py-3">
 
-    <table class="table table-striped">
-      <thead>
+    <table class="table table-striped table-dark table-hover">
+      <thead class="text-bg-danger">
         <th>
           Nome progetto
         </th>
@@ -31,11 +31,13 @@
         @foreach ($projects as $item)
         <tr>
             <td>{{$item->name}}</td>
-            <td><a href="">{{$item->thumb_preview}}</a></td>
+            <td><img src="{{$item->thumb_preview}}"></img></td>
             <td>{{$item->description}}</td>
             <td><a href="">{{$item->link_repo}}</a></td>
             <td>{{$item->languages}}</td>
             <td>{{$item->frameworks}}</td>
+            <td><a href="{{route('admin.project.show', $item)}}">Apri</a></td>
+            <td><a href="{{route('admin.project.edit', $item)}}">Modifica</a></td>
           <td>
           </td>
         </tr>    
